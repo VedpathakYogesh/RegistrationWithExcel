@@ -1,0 +1,9 @@
+enable migration 
+add-miigration tablename
+update database
+
+https://www.youtube.com/watch?v=QqmJVLN906o
+
+https://www.youtube.com/watch?v=J90LeYN2r0U
+
+https://www.youtube.com/watch?v=-pzwRwYlXMw&list=PL6n9fhu94yhVm6S8I2xd6nYz2ZORd7X2v

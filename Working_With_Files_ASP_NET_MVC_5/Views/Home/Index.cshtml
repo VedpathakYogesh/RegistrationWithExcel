@@ -1,0 +1,48 @@
+﻿@model IEnumerable<string>
+
+@{
+    ViewBag.Title = "Home Page";
+}
+
+@using (Html.BeginForm("UploadFile", "Home", FormMethod.Post, new { enctype = "multipart/form-data", id = "UploadFilesForm" }))
+{
+    <div class="jumbotron">
+        <h1>Working With Files</h1>
+        <div class="row">
+            <div class="col-xs-6">
+                <p>Select Files To For Upload</p>
+                <input type="file" name="FileUpload" multiple />
+            </div>
+            <div class="col-xs-6">
+                <div class="row">@Html.ActionLink("Upload File To Applicaion Server", "UploadToAppServer", "Home", null, new { @class = "UploadToAppServer", onclick = "return false;" })</div>
+            </div>
+        </div>
+        <hr />
+        <p style="color: yellowgreen;">
+            &#64;2013-2014 ThingsWeLearned.com
+        </p>
+        <hr />
+        <p>List of uploaded files :</p>
+        <div class="row" style="font-size:x-small;background-color:antiquewhite;border:1px solid blue;">
+            @foreach (var item in Model)
+            {
+                <a href="~/FileUploads/@item.Split('\\')[(item.Split('\\').Length-1)]" target="_blank">Stream File</a> 
+                <a href="~/FileUploads/@item.Split('\\')[(item.Split('\\').Length-1)]" target="_blank">Download File</a>                
+                <span style="border: 1px solid yellow;">@item.Split('\\')[(item.Split('\\').Length - 1)];</span>
+                <img style="width:24px;height:24px;" src="~/FileUploads/@item.Split('\\')[(item.Split('\\').Length-1)]" alt="@item.Split('\\')[(item.Split('\\').Length-1)]" />
+                <br />
+            }
+        </div>
+    </div>
+}
+<script type="text/javascript">
+    $(document).ready(function () {
+        $('.UploadToAppServer').click(function () {
+            $("form:first").attr("action", "/Home/UploadToAppServer");
+            $("form:first").submit();
+        });
+    });
+    function UploadToAppServer() {
+        $.post("test.php", $("#testform").serialize());
+    }
+</script>
