@@ -1,0 +1,27 @@
+﻿
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Index</title>
+</head>
+<body>
+    @using (Html.BeginForm("Process", "UploadFile"))
+    {
+        <table cellpadding="2" cellspacing="2">
+            <tr>
+                <td>File</td>
+                <td><input type="file" name="Excel" /></td>
+
+                <td>&nbsp;</td>
+                <td><input type="submit" value="Upload" /></td>
+            </tr>
+        </table>
+    }
+</body>
+</html>

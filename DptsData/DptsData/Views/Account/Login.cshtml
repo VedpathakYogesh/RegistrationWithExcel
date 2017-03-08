@@ -1,0 +1,131 @@
+﻿@using DptsData.Models
+@model DoctorsRegistrationViewModel
+@{
+    ViewBag.Title = "Register Here ";
+}
+
+<h2>@ViewBag.Title.</h2>
+<div class="row">
+    <div class="col-md-8">
+        <section id="loginForm">
+            @using (Html.BeginForm("Login", "Account", new { ReturnUrl = ViewBag.ReturnUrl }, FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+            {
+                @Html.AntiForgeryToken()
+
+                <h4>Doctors Registration Form.</h4>
+                <hr />
+                <h3>Personal Details:</h3><br />
+
+                @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                <div class="form-group">
+                    @Html.LabelFor(m => m.FirstName, new { @class = "col-md-2 control-label" })
+                    <div class="col-md-5">
+                        @Html.TextBoxFor(m => m.FirstName, new { @class = "form-control" })
+                        @Html.ValidationMessageFor(m => m.FirstName, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+                    @*</fieldset>*@
+                    <div class="form-group">
+                        @Html.LabelFor(m => m.LastName, new { @class = "col-md-2 control-label" })
+                        <div class="col-md-5">
+                            @Html.TextBoxFor(m => m.LastName, new { @class = "form-control" })
+                            @Html.ValidationMessageFor(m => m.LastName, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        @Html.LabelFor(m => m.EmailId, new { @class = "col-md-2 control-label" })
+                        <div class="col-md-10">
+                            @Html.TextBoxFor(m => m.EmailId, new { @class = "form-control" })
+                            @Html.ValidationMessageFor(m => m.EmailId, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        @Html.LabelFor(m => m.PhoneNumber, new { @class = "col-md-2 control-label" })
+                        <div class="col-md-10">
+                            @Html.TextBoxFor(m => m.PhoneNumber, new { @class = "form-control" })
+                            @Html.ValidationMessageFor(m => m.PhoneNumber, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+                    <br />
+                  
+                    <div>
+                        <div class="form-group">
+                            @Html.LabelFor(m => m.Gender, new { @class = "col-md-2 control-label" })
+                            @Html.RadioButtonFor(model => model.Gender, "Male", false)@Html.Label("Male")
+                            @Html.RadioButtonFor(model => model.Gender, "Female", false)@Html.Label("Female")
+                        </div>
+                    </div>
+                    <hr />
+                    @*<fieldset>
+                            <legend style="background-color:brown"></legend>
+                        </fieldset>*@
+                    <h3 style="font-style:normal"> Professional Details </h3><br />
+                    <div class="form-group">
+                        @Html.LabelFor(m => m.ShortProfile, new { @class = "col-md-2 control-label" })
+                        <div class="col-md-10">
+                            @Html.TextBoxFor(m => m.ShortProfile, new { @class = "form-control" })
+                            @Html.ValidationMessageFor(m => m.ShortProfile, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        @Html.LabelFor(m => m.RegistrationNumber, new { @class = "col-md-2 control-label" })
+                        <div class="col-md-10">
+                            @Html.TextBoxFor(m => m.RegistrationNumber, new { @class = "form-control" })
+                            @Html.ValidationMessageFor(m => m.RegistrationNumber, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        @Html.LabelFor(m => m.DateOfBirth, new { @class = "col-md-2 control-label" })
+                        <div class="col-md-10">
+                            @Html.TextBoxFor(m => m.DateOfBirth, new { @class = "form-control" })
+                            @Html.ValidationMessageFor(m => m.DateOfBirth, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        @Html.LabelFor(m => m.Specality, new { @class = "col-md-2 control-label" })
+                        <div class="col-md-10">
+                            @Html.TextBoxFor(m => m.Specality, new { @class = "form-control" })
+                            @Html.ValidationMessageFor(m => m.Specality, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        @Html.LabelFor(m => m.YearsOfExperience, new { @class = "col-md-2 control-label" })
+                        <div class="col-md-10">
+                            @Html.TextBoxFor(m => m.YearsOfExperience, new { @class = "form-control" })
+                            @Html.ValidationMessageFor(m => m.YearsOfExperience, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-md-offset-2 col-md-10">
+
+
+                            <input type="submit" value="Register" class="btn btn-default" href="http://go.microsoft.com/fwlink/?LinkId=301866" /> &nbsp;&nbsp;&nbsp;&nbsp;
+                            <button type="button" onclick="location.href='@Url.Action("Index", "UploadFile")'">Upload Photo</button>
+                            <button type="button" onclick="location.href='@Url.Action("Upload", "ExcelReader")'">Upload Excel Files</button>
+                        </div>
+                    </div>
+                    
+
+                    @* Enable this once you have account confirmation enabled for password reset functionality
+                        <p>
+                            @Html.ActionLink("Forgot your password?", "ForgotPassword")
+                        </p>*@
+
+            }
+            </section>
+        </div>
+
+
+
+   
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}
+</div>

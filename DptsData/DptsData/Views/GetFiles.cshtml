@@ -1,0 +1,48 @@
+﻿@*@model <App.Models.FileNames>
+
+@{
+    ViewBag.Title = "GetFiles";
+}
+
+<h2>GetFiles</h2>
+
+@using (Html.BeginForm("DeleteFiles", "FileProcess", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+
+    <table style="border:solid;border-color:#b2b2b2;padding-right:5px;padding-left:5px;padding-top:5px;padding-bottom:5px;color:Black;background-color:#f8f8f8;">
+        <tr>
+            <th>File No</th>
+            <th>
+                FileName
+            </th>
+            <th>
+                File Type
+            </th>
+            <th>
+                Download
+            </th>
+        </tr>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td style="border:solid;border-color:#b4b4b4;padding-right:5px;padding-left:5px;padding-top:5px;padding-bottom:5px;color:Black;background-color:#f8f8f8;vertical-align:central;">
+                    @Html.DisplayFor(modelItem => item.FileId)
+                </td>
+                <td style="width:10px;border:solid;border-color:#b4b4b4;padding-right:5px;padding-left:5px;padding-top:5px;padding-bottom:5px;color:Black;background-color:#f8f8f8;">
+                    <input type="checkbox" name="fname" value="@item.FileNameWithExt" />
+                </td>
+                <td style="border:solid;border-color:#b4b4b4;padding-right:5px;padding-left:5px;padding-top:5px;padding-bottom:5px;color:Black;background-color:#f8f8f8;">
+                    @Html.DisplayFor(modelItem => item.FileName)
+                </td>
+                <td style="border:solid;border-color:#b4b4b4;padding-right:5px;padding-left:5px;padding-top:5px;padding-bottom:5px;color:Black;background-color:#f8f8f8;">
+                    @Html.DisplayFor(modelItem => item.FileExt)
+                </td>
+            </tr>
+        }
+
+
+    </table>
+
+    <input type="submit" value="Delete" />
+}*@

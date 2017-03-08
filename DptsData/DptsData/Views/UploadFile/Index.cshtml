@@ -1,0 +1,41 @@
+﻿
+@{
+    Layout = null;
+}
+@using DptsData.Models
+@model DoctorsRegistrationViewModel
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Index</title>
+</head>
+<body>
+    @using (Html.BeginForm("Process", "UploadFile" ,FormMethod.Post, new { enctype="multipart/form-data"}))
+    {
+        @ViewBag.Error
+        <table cellpadding="2" cellspacing="2">
+            <tr>
+                <td>File</td>
+                <td><input type="file" name="photo" /></td>
+                <div class="form-group">
+                    @Html.LabelFor(m => m.RegistrationNumber, new { @class = "col-md-2 control-label" })
+                    <div class="col-md-10">
+                        @Html.TextBoxFor(m => m.RegistrationNumber, new { @class = "form-control" })
+                        @Html.ValidationMessageFor(m => m.RegistrationNumber, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+                
+
+                <td>&nbsp;</td>
+
+                <td><input type="submit" value="Upload"/></td>
+            </tr>
+
+        </table>
+    }
+
+    
+</body>
+</html>
